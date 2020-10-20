@@ -55,7 +55,7 @@ Things you may want to cover:
 | shipping_fee_id    | integer    | null: false                   |
 | prefecture_id      | integer    | null: false                   |
 | delivery_date_id   | integer    | null: false                   |
-| item_price         | integer    | null: false                   |
+| price              | integer    | null: false                   |
 
 ### Association
 
@@ -84,7 +84,7 @@ Things you may want to cover:
 | city                    | string     | null: false                    |
 | line                    | string     | null: false                    |
 | building_room           | string     |                                |
-| phone_number            | integer    | null: false                    |
+| phone_number            | string     | null: false                    |
 | order                   | references | null: false, foreign_key: true |
 
 ### Association
