@@ -10,32 +10,6 @@ RSpec.describe User, type: :model do
       it '必要事項が全て記入されていれば登録できる' do
         expect(@user).to be_valid
       end
-
-      it 'nicknameが1文字以上で登録できる' do
-        @user.nickname = 'a'
-        expect(@user).to be_valid
-      end
-
-      it 'passwordが半角英数6文字以上で登録できる' do
-        @user.password = 'shirosan10'
-        @user.password_confirmation = @user.password
-        expect(@user).to be_valid
-      end
-
-      it 'last_nameが全角混同でも登録できる' do
-        @user.last_name = '白サん'
-        expect(@user).to be_valid
-      end
-
-      it 'first_nameが全角混同でも登録できる' do
-        @user.first_name = '太ロう'
-        expect(@user).to be_valid
-      end
-
-      it 'メールアドレスに@が含まれていれば登録できる' do
-        @user.email = 'text@com'
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録ができない場合' do
@@ -103,7 +77,7 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include('Email is invalid')
         end
-        it 'パスワードが5文字以下では登録できない' do
+        it '半角数字と半角英字は含むが5文字以下' do
           @user.password = '00000'
           @user.password_confirmation = @user.password
           @user.valid?
@@ -167,23 +141,23 @@ RSpec.describe User, type: :model do
         end
         
         it '名（フリガナ）に半角文字が含まれると登録できない' do
-          @user.first_name_kana += 'ﾀﾛｳ'
+          @user.first_name_kana = 'ﾀﾛｳ'
           @user.valid?
           expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters.')
         end
         it '名（フリガナ）にカタカナ以外が含まれると登録できない' do
-          @user.first_name_kana += 'たろう'
+          @user.first_name_kana = 'たろう'
           @user.valid?
           expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters.')
         end
 
         it '姓（フリガナ）に半角文字が含まれると登録できない' do
-          @user.last_name_kana += 'ﾀﾅｶ'
+          @user.last_name_kana = 'ﾀﾅｶ'
           @user.valid?
           expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters.')
         end
         it '姓（フリガナ）にカタカナ以外が含まれると登録できない' do
-          @user.last_name_kana += 'たなか'
+          @user.last_name_kana = 'たなか'
           @user.valid?
           expect(@user.errors.full_messages).to include('Last name kana Full-width katakana characters.')
         end
