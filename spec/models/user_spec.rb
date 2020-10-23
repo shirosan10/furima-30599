@@ -135,6 +135,37 @@ RSpec.describe User, type: :model do
       end
 
       context '本人確認が原因のとき' do
+        it "last_nameが半角では登録できない" do
+          @user.last_name = "ﾀﾅｶ"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Last name Full-width characters.")
+        end
+        it "last_nameが英語では登録できない" do
+          @user.last_name = "TANAKA"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Last name Full-width characters.")
+        end
+        it "last_nameが数字では登録できない" do
+          @user.last_name = "4649"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Last name Full-width characters.")
+        end
+        it "first_nameが半角では登録できない" do
+          @user.first_name = "ﾀﾛｳ"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("First name Full-width characters.")
+        end
+        it "first_nameが英語では登録できない" do
+          @user.first_name = "ＴＡＲＯ"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("First name Full-width characters.")
+        end
+        it "first_nameが数字では登録できない" do
+          @user.first_name = "4649"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("First name Full-width characters.")
+        end
+        
         it '名（フリガナ）に半角文字が含まれると登録できない' do
           @user.first_name_kana += 'ﾀﾛｳ'
           @user.valid?
