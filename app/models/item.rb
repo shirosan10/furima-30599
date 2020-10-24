@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :title, :catch_copy, :genre_id, :status_id, :shipping_fee_id, :prefecture_id, :delivery_date_id, :price, presence: true
 
   #ジャンルの選択が「--」の時は保存できないようにする
-  validates :genre_id, :status_id, numericality: { other_than: 1 } 
+  validates :genre_id, :status_id, numericality: { other_than: 0 } 
 
 
 end
