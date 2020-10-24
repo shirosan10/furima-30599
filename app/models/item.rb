@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attaced :image
 
   validates :title,           presence: true
   validates :catch_copy,      presence: true
