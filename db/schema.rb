@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_033457) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "catch_copy", null: false
-    t.integer "genre_id", null: false
+    t.integer "category_id", null: false
     t.integer "status_id", null: false
     t.integer "shipping_fee_id", null: false
     t.integer "prefecture_id", null: false
