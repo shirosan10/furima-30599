@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  before do
+  before '#create' do
     @item = FactoryBot.build(:item)
     @item.image = fixture_file_upload('app/assets/images/camera.png')
   end
@@ -17,37 +17,37 @@ RSpec.describe Item, type: :model do
       it "商品名が空だと登録できない" do
         @item.title = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name can't be blank")
+        expect(@item.errors.full_messages).to include("Title can't be blank")
       end
       it "商品の説明がないと登録できない" do
         @item.catch_copy = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include("Introduction can't be blank")
+        expect(@item.errors.full_messages).to include("Catch copy can't be blank")
       end
       it "カテゴリーの情報がないと登録できない" do
-        @item.category_id = "1"
+        @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("Category Select")
       end
       it "商品の状態についての情報がないと登録できない" do
-        @item.status_id = "1"
+        @item.status_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item condition must be other than 1")
+        expect(@item.errors.full_messages).to include("Status Select")
       end
       it "配送料の負担についての情報がないと登録できない" do
-        @item.shipping_fee_id = "1"
+        @item.shipping_fee_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+        expect(@item.errors.full_messages).to include("Shipping fee Select")
       end
       it "発送元の地域についての情報がないと登録できない" do
-        @item.prefecture_id = "1"
+        @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture Select")
       end
       it "発送までの日数についての情報がないと登録できない" do
-        @item.delivery_date_id = "1"
+        @item.delivery_date_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping date must be other than 1")
+        expect(@item.errors.full_messages).to include("Delivery date Select")
       end
       it "価格についての情報がないと登録できない" do
         @item.price = ""
@@ -67,7 +67,7 @@ RSpec.describe Item, type: :model do
       it "販売価格が全角数字だと登録できない" do
         @item.price = "１２３４５"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
     end
   end

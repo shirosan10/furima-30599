@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   #ジャンルの選択が「--」の時は保存できないようにする
-  validates :category_id, :status_id, :shipping_fee_id, :prefecture_id, :delivery_date, numericality: { other_than: 0, message: "Select"}
+  validates :category_id, :status_id, :shipping_fee_id, :prefecture_id, :delivery_date_id, numericality: { other_than: 0, message: "Select"}
 
 
   #金額範囲のバリデーション 
