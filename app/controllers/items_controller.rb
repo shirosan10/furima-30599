@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @items = Item.all.order("created_at DESC")
   end
 
   def create
