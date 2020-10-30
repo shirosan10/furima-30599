@@ -50,7 +50,7 @@ Things you may want to cover:
 | user               | references | null: false, foreign_key: true|
 | title              | string     | null: false                   |
 | catch_copy         | text       | null: false                   |
-| genre_id           | integer    | null: false                   |
+| category_id           | integer    | null: false                   |
 | status_id          | integer    | null: false                   |
 | shipping_fee_id    | integer    | null: false                   |
 | prefecture_id      | integer    | null: false                   |
