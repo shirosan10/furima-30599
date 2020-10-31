@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
 
   def move_to_index
     unless current_user.id == @item.user.id
-      redirect_to : new_user_session_path
+      redirect_to action: :index
     end
   end
 
