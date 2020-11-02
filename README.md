@@ -59,10 +59,10 @@ Things you may want to cover:
 
 ### Association
 
-- has_one :order
+- has_one :orders
 - belongs_to :user
 
-## order テーブル
+## orders テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
@@ -89,4 +89,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :order
+- belongs_to :orders
