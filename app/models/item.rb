@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_date
 
   belongs_to :user
-  has_one :orders
+  has_one :order
   has_one_attached :image
 
   # 空の投稿を保存できないようにする
