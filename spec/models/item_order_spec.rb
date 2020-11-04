@@ -11,7 +11,7 @@ RSpec.describe ItemOrder, type: :model do
     end
 
     it "建物名が抜けていても購入できる" do
-      @item_order.building_name = nil
+      @item_order.building_room= nil
       expect(@item_order).to be_valid
     end
 
@@ -55,7 +55,7 @@ RSpec.describe ItemOrder, type: :model do
     it "番地が空だと購入できない" do
       @item_order.line = nil
       @item_order.valid?
-      expect(@item_order.errors.full_messages).to include("House number can't be blank")
+      expect(@item_order.errors.full_messages).to include("Line can't be blank")
     end
 
     it "電話番号が空だと購入できない" do
@@ -67,7 +67,7 @@ RSpec.describe ItemOrder, type: :model do
     it "電話番号が全角数字だと購入できない" do
       @item_order.tell_number = "０7０１２３４５６７８"
       @item_order.valid?
-      expect(@item_order.errors.full_messages).to include("Tell number is invalid")
+      expect(@item_order.errors.full_messages).to include("Phone number is invalid")
     end
   end
 end
