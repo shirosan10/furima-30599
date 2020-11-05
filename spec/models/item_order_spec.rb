@@ -40,9 +40,9 @@ RSpec.describe ItemOrder, type: :model do
     end
 
     it '都道府県が--だと購入できない' do
-      @Item_order.prefecture_id = '---'
+      @Item_order.prefecture_id = 0
       @Item_order.valid?
-      expect(@Item_order.errors.full_messages).to include('Prefecture is not a number')
+      expect(@Item_order.errors.full_messages).to include('Prefecture must be other than 0')
     end
 
     it '市区町村が空だと購入できない' do
