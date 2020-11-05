@@ -12,4 +12,4 @@ priceInput.addEventListener("input", () => {
 })
 
 }
-window.addEventListener('DOMContentLoaded', input);
+window.addEventListener('keydown', input);
