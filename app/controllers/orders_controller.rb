@@ -10,13 +10,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-
     @item_order = ItemOrder.new(order_params)
     if @item_order.valid?
+      pay_item
       @item_order.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -27,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :price,).merge(user_id: current_user.id)
+    params.require(:item).permit(:title, :price).merge(user_id: current_user.id)
   end
 
   def set_item
