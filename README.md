@@ -62,7 +62,7 @@ Things you may want to cover:
 - has_one :order
 - belongs_to :user
 
-## order テーブル
+## orders テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
