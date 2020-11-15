@@ -147,6 +147,11 @@
   text-align: center;
 }
 
+.comment-form {
+  background-color: white;
+}
+
+
 .comment-text {
   width: 100%;
   height: 100px;
