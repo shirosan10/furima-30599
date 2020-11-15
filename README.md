@@ -36,8 +36,6 @@ Things you may want to cover:
 | last_name_kana  | string | null: false |
 | birthday        | date   | null: false |
 
-<!-- 実装し終えたらyear/month/day事にレコードを分けるかどうか -->
-
 ### Association
 
 - has_many :items
@@ -90,3 +88,15 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :order
+
+## Commentsテーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| text   | text       | null: false                    |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+-belongs_to :user
+-belongs_to :item
