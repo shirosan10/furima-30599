@@ -3,6 +3,6 @@ ja:
    attributes:
      user:
        nickname: ニックネーム
-     tweet:
+     item:
        text: テキスト
        image: 画像
