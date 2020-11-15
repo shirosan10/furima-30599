@@ -6,3 +6,12 @@ ja:
      item:
        text: テキスト
        image: 画像
+       title: 商品名
+       catch_copy: 商品の説明
+       category: カテゴリー
+       status: 商品の状態
+       shipping_fee: 配送料
+       prefecture: 発送元の地域
+       delivery_date: 発送までの日数
+       price: 価格
+       
