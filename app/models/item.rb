@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :order
   has_one_attached :image
+  has_many :comments
 
   # 空の投稿を保存できないようにする
   with_options presence: true do
