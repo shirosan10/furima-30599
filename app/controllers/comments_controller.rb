@@ -1,22 +1,25 @@
 class CommentsController < ApplicationController
-  def index
-    @comment = Comment.new
-    @item = Item.find(params[:item_id])
-  end
+  before_action :authenticate_user!, only: :create
+  before_action :set_item
 
   def create
-    @item = Item.find(params[:item_id])
-    @comment = @item.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.valid?
     if @comment.save
-      redirect_to item_path(@comment.item)
+      ActionCable.server.broadcast 'comment_channel', content: @comment
     else
-      redirect_to item_path(@item)
+      render template: 'items/show'
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:comment).permit(:text).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+    @comments = @item.comments.includes(:user)
   end
 end

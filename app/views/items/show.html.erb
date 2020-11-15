@@ -78,14 +78,14 @@
   <%# コメント機能 %>
   <% if @comments %>
     <% @comments.each do |comment| %>
-    <li class="">
-      <%= comment.user.nickname %>
+    <li class="comments-list">
+      <%= link_to comment.user.nickname, user_path(comment.user) %>
       <%= comment.content %>
     </li>
     <% end %>
   <% end %>
   <% if user_signed_in? %>
-    <%= form_with model: [@item, @comment], local: true do |f| %>
+    <%= form_with model: [@item, @comment],id: 'comment-form',  local: true do |f| %>
     <div class="comment-box">
       <form>
         <%= f.text_area :content, class:"comment-text", placeholder:"コメントを入力" %>
@@ -103,7 +103,7 @@
     <% end %>
   <% end %>
   <%# /コメント機能 %>
-  
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
